@@ -37,7 +37,7 @@ def sine_law(side1=None, angle1=None, side2=None, angle2=None, obtuse=False):
     if angle2 is not None and not is_numeric(angle2):
         raise TypeError("angle2 must be a number, not '%s'" % str(angle2))
     if [side1, angle1, side2, angle2].count(None) != 1:
-        raise TypeError("You must supply precisely three arguments to sine_law()")
+        raise TypeError("You must supply exactly three arguments to sine_law()")
 
     angle = None
     if side1 is None:

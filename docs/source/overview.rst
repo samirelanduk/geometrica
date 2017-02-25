@@ -58,3 +58,5 @@ and the angle in degrees to rotate by (right-handed):
 
     >>> geometrica.rotate([(1, 1, 1), (3, 4, -8)], "x", 90)
     ((1, -1, 1), (3, 8, 4))
+
+Here, the two points were rotated around the x-axis by 90°.
