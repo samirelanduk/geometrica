@@ -14,9 +14,9 @@ def translate(points, x, y, z):
     An example would be ``translate([(1, 1, 1), (2, 2, 2)], 5, 5, 5)``.
 
     :param points: A collection of (x, y, z) coordinates.
-    :param Number x: The distance to move the points in the x direction.
-    :param Number y: The distance to move the points in the y direction.
-    :param Number z: The distance to move the points in the z direction.
+    :param number x: The distance to move the points in the x direction.
+    :param number y: The distance to move the points in the y direction.
+    :param number z: The distance to move the points in the z direction.
     :returns: The translated coordinates."""
 
     if not are_numeric(x, y, z):
@@ -38,8 +38,8 @@ def rotate(points, axis, angle):
     :param points: A collection of (x, y, z) coordinates.
     :param str axis: The axis to rotate around. Accepted values are `"x"`,\
     `"y"` or `"z"`.
-    :param Number angle: The angle in degrees to rotate by.
-    :returns: The translated coordinates."""
+    :param number angle: The angle in degrees to rotate by.
+    :returns: The rotated coordinates."""
 
     if not is_numeric:
         raise TypeError("angle must be numeric, not '%s'" % str(angle))
