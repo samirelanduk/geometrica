@@ -23,5 +23,6 @@ setup(
   "Programming Language :: Python :: 3.6",
  ],
  keywords="geometry trigonometry coordinates shapes",
- packages=["geometrica"]
+ packages=["geometrica"],
+ install_requires=["matrices"]
 )
