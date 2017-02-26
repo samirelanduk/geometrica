@@ -30,7 +30,7 @@ def rotate(points, axis, angle):
     """Takes a set of coordinates and rotates them around one of the axes by a
     specified angle. The rotation performed is right-handed.
 
-    The points must be a list (or tuple, or any collection really) of
+    The points must be a list (or tuple, or any collection) of
     coordinates in the form ``(x, y, z)``.
 
     An example would be ``rotate([(1, 1, 1), (2, 2, 2)], "x", 45)``.

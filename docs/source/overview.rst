@@ -41,8 +41,8 @@ If you have a set of coordinates in three dimensional space, you can translate
 them with the :py:func:`.translate` function. This will shift the set of
 coordinates around but will retain their relative positions and orientation.
 
-The coordinates are provided as a list/tuple of (x, y, z) values, along with
-the magnitude of the translation in the x, y, and z directions:
+The coordinates are provided as a list/tuple/collection of (x, y, z) values,
+along with the magnitude of the translation in the x, y, and z directions:
 
     >>> geometrica.translate([(1, 1, 1), (3, 4, -8)], 5, 5, 5)
     ((6, 6, 6), (8, 9, -3))
