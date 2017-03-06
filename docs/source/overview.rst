@@ -54,7 +54,7 @@ positions of the two points after the translation are returned.
 You can also rotate coordinates around one of the three axes with the
 :py:func:`.rotate` function. The coordinates are supplied in the same way, but
 you also need to provide the axis to rotate around as a one character string,
-and the angle in degrees to rotate by (right-handed):
+and the angle in degrees to rotate by (right-handed is the default):
 
     >>> geometrica.rotate([(1, 1, 1), (3, 4, -8)], "x", 90)
     ((1, -1, 1), (3, 8, 4))
