@@ -81,6 +81,13 @@ class RotationTests(TransformationTest):
         )
 
 
+    def test_can_switch_handedness(self):
+        self.assertPointsAlmostEqual(
+         rotate(self.points, "x", 90, hand="left"),
+         ((1, 1, -1), (2, 1, -1), (3, 1, -1), (4, 1, -1), (5, 1, -1))
+        )
+
+
     def test_axis_must_be_x_or_y_or_z(self):
         with self.assertRaises(ValueError):
             rotate(self.points, "a", 90)
@@ -89,3 +96,13 @@ class RotationTests(TransformationTest):
     def test_angle_must_be_numeric(self):
         with self.assertRaises(TypeError):
             rotate(self.points, "x", "90")
+
+
+    def test_hand_must_be_str(self):
+        with self.assertRaises(TypeError):
+            rotate(self.points, "x", 90, hand=100)
+
+
+    def test_hand_must_be_valid(self):
+        with self.assertRaises(ValueError):
+            rotate(self.points, "x", 90, hand="wrong")

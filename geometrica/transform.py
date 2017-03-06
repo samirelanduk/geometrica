@@ -26,9 +26,10 @@ def translate(points, x, y, z):
     return tuple([tuple([px + x, py + y, pz + z]) for px, py, pz in points])
 
 
-def rotate(points, axis, angle):
+def rotate(points, axis, angle, hand="right"):
     """Takes a set of coordinates and rotates them around one of the axes by a
-    specified angle. The rotation performed is right-handed.
+    specified angle. The rotation performed is right-handed, unless specified
+    otherwise.
 
     The points must be a list (or tuple, or any collection) of
     coordinates in the form ``(x, y, z)``.
@@ -39,10 +40,18 @@ def rotate(points, axis, angle):
     :param str axis: The axis to rotate around. Accepted values are `"x"`,\
     `"y"` or `"z"`.
     :param number angle: The angle in degrees to rotate by.
+    :param str hand: specifies whether the rotation should be right-handed or\
+    left-handed. The deafult is 'right'.
     :returns: The rotated coordinates."""
 
     if not is_numeric:
         raise TypeError("angle must be numeric, not '%s'" % str(angle))
+    if not isinstance(hand, str):
+        raise TypeError("hand must be str, not '%s'" % str(hand))
+    elif hand not in ("left", "right"):
+        raise ValueError("hand must be 'left' or 'right', not %s" % hand)
+    elif hand == "left":
+        angle = -angle
     angle = radians(angle)
     points = [create_vertex(*point) for point in points]
     matrix = None
