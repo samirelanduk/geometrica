@@ -60,3 +60,6 @@ and the angle in degrees to rotate by (right-handed is the default):
     ((1, -1, 1), (3, 8, 4))
 
 Here, the two points were rotated around the x-axis by 90°.
+
+In both cases, instead of a list of tuples, you can provide a list of objects
+which have x(), y() and z() methods instead.

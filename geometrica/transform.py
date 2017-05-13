@@ -16,7 +16,7 @@ def accept_objects(func):
             points = [(obj.x(), obj.y(), obj.z()) for obj in objects]
         return func(points, *args, **kwargs)
     return new_func
-    
+
 
 @accept_objects
 def translate(points, x, y, z):
@@ -24,11 +24,12 @@ def translate(points, x, y, z):
     space.
 
     The points must be a list (or tuple, or any collection really) of
-    coordinates in the form ``(x, y, z)``.
+    coordinates in the form ``(x, y, z)``, *or* a list (etc.) of objects with
+    x(), y() and z() methods.
 
     An example would be ``translate([(1, 1, 1), (2, 2, 2)], 5, 5, 5)``.
 
-    :param points: A collection of (x, y, z) coordinates.
+    :param points: A collection of (x, y, z) coordinates or appropriate objects.
     :param number x: The distance to move the points in the x direction.
     :param number y: The distance to move the points in the y direction.
     :param number z: The distance to move the points in the z direction.
@@ -48,11 +49,12 @@ def rotate(points, axis, angle, hand="right"):
     otherwise.
 
     The points must be a list (or tuple, or any collection) of
-    coordinates in the form ``(x, y, z)``.
+    coordinates in the form ``(x, y, z)``, *or* a list (etc.) of objects with
+    x(), y() and z() methods.
 
     An example would be ``rotate([(1, 1, 1), (2, 2, 2)], "x", 45)``.
 
-    :param points: A collection of (x, y, z) coordinates.
+    :param points: A collection of (x, y, z) coordinates or appropriate objects.
     :param str axis: The axis to rotate around. Accepted values are `"x"`,\
     `"y"` or `"z"`.
     :param number angle: The angle in degrees to rotate by.
