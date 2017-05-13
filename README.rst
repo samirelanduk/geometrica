@@ -100,9 +100,20 @@ and the angle in degrees to rotate by (right-handed is the default):
 
 Here, the two points were rotated around the x-axis by 90°.
 
+In both cases, instead of a list of tuples, you can provide a list of objects
+which have x(), y() and z() methods instead.
+
 
 Changelog
 ---------
+
+Release 0.2.0
+~~~~~~~~~~~~~
+
+`13 May 2017`
+
+* Added a decorator which allows the transformation functions to accept objects
+
 
 Release 0.1.1
 ~~~~~~~~~~~~~

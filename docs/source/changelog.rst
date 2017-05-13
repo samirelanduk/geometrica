@@ -1,6 +1,14 @@
 Changelog
 ---------
 
+Release 0.2.0
+~~~~~~~~~~~~~
+
+`13 May 2017`
+
+* Added a decorator which allows the transformation functions to accept objects
+
+
 Release 0.1.1
 ~~~~~~~~~~~~~
 

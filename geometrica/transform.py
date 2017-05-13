@@ -15,6 +15,8 @@ def accept_objects(func):
         except TypeError:
             points = [(obj.x(), obj.y(), obj.z()) for obj in objects]
         return func(points, *args, **kwargs)
+    new_func.__name__ = func.__name__
+    new_func.__doc__ = func.__doc__
     return new_func
 
 
