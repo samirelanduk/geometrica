@@ -1,5 +1,6 @@
 from unittest import TestCase
-from geometrica.transform import translate, rotate
+from unittest.mock import Mock
+from geometrica.transform import translate, rotate, accept_objects
 
 class TransformationTest(TestCase):
 
@@ -106,3 +107,25 @@ class RotationTests(TransformationTest):
     def test_hand_must_be_valid(self):
         with self.assertRaises(ValueError):
             rotate(self.points, "x", 90, hand="wrong")
+
+
+
+class ObjectAcceptanceDecoratorTests(TestCase):
+
+    def setUp(self):
+        def func(points, arg1, arg2, arg3):
+            return [(x + arg1, y + arg2, z + arg3) for x, y, z in points]
+        self.func = func
+
+
+    def test_can_apply_decorator(self):
+        new_func = accept_objects(self.func)
+        obj1, obj2 = Mock(), Mock()
+        obj1.x.return_value, obj1.y.return_value, obj1.z.return_value = 1, 1, 1
+        obj2.x.return_value, obj2.y.return_value, obj2.z.return_value = 2, 2, 2
+        self.assertEqual(new_func([obj1, obj2], 3, 4, 5), [(4, 5, 6), (5, 6, 7)])
+
+
+    def test_decorator_ignores_already_fine_points(self):
+        new_func = accept_objects(self.func)
+        self.assertEqual(new_func([(1, 1, 1), (2, 2, 2)], 3, 4, 5), [(4, 5, 6), (5, 6, 7)])
