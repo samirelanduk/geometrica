@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
  name="geometrica",
- version="0.1.1",
+ version="0.2.0",
  description="A pure-Python geometry library",
  url="https://geometrica.samireland.com",
  author="Sam Ireland",
