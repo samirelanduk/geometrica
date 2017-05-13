@@ -4,6 +4,21 @@ from math import radians, sin, cos
 from matrices.checks import are_numeric, is_numeric
 from matrices import create_vertex, Matrix
 
+def accept_objects(func):
+    """This decorator can be applied to functions whose first argument is a list
+    of x, y, z points. It allows the function to also accept a list of objects
+    which have x(), y() and z() methods instead."""
+
+    def new_func(objects, *args, **kwargs):
+        try:
+            points = [(x, y, z) for x, y, z in objects]
+        except TypeError:
+            points = [(obj.x(), obj.y(), obj.z()) for obj in objects]
+        return func(points, *args, **kwargs)
+    return new_func
+    
+
+@accept_objects
 def translate(points, x, y, z):
     """Takes a set of coordinates and translates them in three dimensional
     space.
@@ -26,6 +41,7 @@ def translate(points, x, y, z):
     return tuple([tuple([px + x, py + y, pz + z]) for px, py, pz in points])
 
 
+@accept_objects
 def rotate(points, axis, angle, hand="right"):
     """Takes a set of coordinates and rotates them around one of the axes by a
     specified angle. The rotation performed is right-handed, unless specified
@@ -77,17 +93,3 @@ def rotate(points, axis, angle, hand="right"):
         raise ValueError("axis can only be 'x', 'y' or 'z', not %s" % axis)
     new_points = [matrix * point for point in points]
     return tuple([point.columns()[0] for point in new_points])
-
-
-def accept_objects(func):
-    """This decorator can be applied to functions whose first argument is a list
-    of x, y, z points. It allows the function to also accept a list of objects
-    which have x(), y() and z() methods instead."""
-
-    def new_func(objects, *args, **kwargs):
-        try:
-            points = [(x, y, z) for x, y, z in objects]
-        except TypeError:
-            points = [(obj.x(), obj.y(), obj.z()) for obj in objects]
-        return func(points, *args, **kwargs)
-    return new_func
